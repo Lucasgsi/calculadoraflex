@@ -39,6 +39,8 @@ public class BuscarFipeWS extends AsyncTask<String, Integer, String>{
         AdapterFipe adapterFipes = new AdapterFipe(activity, fipes);
         ListView listView = (ListView) activity.findViewById(R.id.listFipe);
         listView.setAdapter(adapterFipes);
+
+        
         //progressBar.setVisibility(View.INVISIBLE);
     }
 
