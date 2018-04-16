@@ -22,4 +22,10 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ConsultarTabelaFipe.class);
         startActivity(intent);
     }
+
+    public void viewCalculadoraFlex(View view) {
+        Intent intent = new Intent(this, Calculadoraflex.class);
+        startActivity(intent);
+    }
+
 }

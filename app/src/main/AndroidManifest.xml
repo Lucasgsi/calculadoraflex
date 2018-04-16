@@ -18,9 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CalculadoraflexActivity" />
+        <activity android:name=".Calculadoraflex" />
         <activity android:name=".ConsultarTabelaFipe" />
-        <activity android:name=".Marcas_Veiculo"></activity>
+        <activity android:name=".Marcas_Veiculo" />
+        <activity android:name=".MediaConsumo" />
+        <activity android:name=".linhas_veiculo" />
+        <activity android:name=".linhas_modelo" />
+        <activity android:name=".linhas_modelo_preco"></activity>
     </application>
 
 </manifest>

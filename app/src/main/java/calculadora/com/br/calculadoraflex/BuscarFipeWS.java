@@ -21,6 +21,7 @@ public class BuscarFipeWS extends AsyncTask<String, Integer, String>{
 
     Activity activity;
     ProgressBar progressBar;
+    private String tipoConversao = "marca";
 
     public BuscarFipeWS(Activity activity) {
         this.activity = activity;
@@ -35,12 +36,36 @@ public class BuscarFipeWS extends AsyncTask<String, Integer, String>{
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         Gson gson = new Gson();
-        List<Fipe> fipes = gson.fromJson(s, new TypeToken<List<Fipe>>(){}.getType());
-        AdapterFipe adapterFipes = new AdapterFipe(activity, fipes);
-        ListView listView = (ListView) activity.findViewById(R.id.listFipe);
-        listView.setAdapter(adapterFipes);
+        if(tipoConversao.equals("marca")) {
 
-        
+            List<Fipe> fipes = gson.fromJson(s, new TypeToken<List<Fipe>>() {
+            }.getType());
+            AdapterFipe adapterFipes = new AdapterFipe(activity, tipoConversao, fipes, null,null, null);
+            ListView listView = (ListView) activity.findViewById(R.id.listFipe);
+            listView.setAdapter(adapterFipes);
+        }else if (tipoConversao.equals("veiculo")){
+
+            List<Veiculo> veiculos = gson.fromJson(s, new TypeToken<List<Veiculo>>() {
+            }.getType());
+            AdapterFipe adapterFipes = new AdapterFipe(activity, tipoConversao, null, veiculos,null, null);
+            ListView listView = (ListView) activity.findViewById(R.id.listFipe);
+            listView.setAdapter(adapterFipes);
+        }else if (tipoConversao.equals("modelo")) {
+            List<VeiculoModelo> veiculoModelos = gson.fromJson(s, new TypeToken<List<VeiculoModelo>>() {
+            }.getType());
+            AdapterFipe adapterFipes = new AdapterFipe(activity, tipoConversao, null, null,veiculoModelos, null);
+            ListView listView = (ListView) activity.findViewById(R.id.listFipe);
+            listView.setAdapter(adapterFipes);
+        }else if (tipoConversao.equals("preco")) {
+            VeiculoModeloPreco veiculoModeloPreco = gson.fromJson(s, new TypeToken<VeiculoModeloPreco>() {
+            }.getType());
+            AdapterFipe adapterFipes = new AdapterFipe(activity, tipoConversao, null, null,null,veiculoModeloPreco);
+            ListView listView = (ListView) activity.findViewById(R.id.listFipe);
+            listView.setAdapter(adapterFipes);
+        }
+
+
+
         //progressBar.setVisibility(View.INVISIBLE);
     }
 
@@ -53,6 +78,25 @@ public class BuscarFipeWS extends AsyncTask<String, Integer, String>{
     protected String doInBackground(String... strings) {
         String jsonRetorno = null;
         try {
+
+            if(strings[0].contains("-marca")){
+
+                tipoConversao = "marca";
+                strings[0] = strings[0].replace("-marca", "");
+            } else if(strings[0].contains("-veiculo")){
+
+                tipoConversao = "veiculo";
+                strings[0] = strings[0].replace("-veiculo", "");
+            } else if(strings[0].contains("-modelo")){
+
+                tipoConversao = "modelo";
+                strings[0] = strings[0].replace("-modelo", "");
+            } else if(strings[0].contains("-preco")){
+
+                tipoConversao = "preco";
+                strings[0] = strings[0].replace("-preco", "");
+            }
+
             URL url = new URL(strings[0]);
             InputStream stream = url.openStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));

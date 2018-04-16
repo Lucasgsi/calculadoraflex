@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
-public class CalculadoraflexActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class Calculadoraflex extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     private android.widget.ListView listViewCarros;
     private String resultadoList;
