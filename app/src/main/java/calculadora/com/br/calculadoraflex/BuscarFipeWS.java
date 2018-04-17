@@ -51,12 +51,14 @@ public class BuscarFipeWS extends AsyncTask<String, Integer, String>{
             ListView listView = (ListView) activity.findViewById(R.id.listFipe);
             listView.setAdapter(adapterFipes);
         }else if (tipoConversao.equals("modelo")) {
+
             List<VeiculoModelo> veiculoModelos = gson.fromJson(s, new TypeToken<List<VeiculoModelo>>() {
             }.getType());
             AdapterFipe adapterFipes = new AdapterFipe(activity, tipoConversao, null, null,veiculoModelos, null);
             ListView listView = (ListView) activity.findViewById(R.id.listFipe);
             listView.setAdapter(adapterFipes);
         }else if (tipoConversao.equals("preco")) {
+
             VeiculoModeloPreco veiculoModeloPreco = gson.fromJson(s, new TypeToken<VeiculoModeloPreco>() {
             }.getType());
             AdapterFipe adapterFipes = new AdapterFipe(activity, tipoConversao, null, null,null,veiculoModeloPreco);

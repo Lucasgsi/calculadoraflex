@@ -28,4 +28,9 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void viewMediaConsumo(View view) {
+        Intent intent = new Intent(this, MediaConsumo.class);
+        startActivity(intent);
+    }
+
 }

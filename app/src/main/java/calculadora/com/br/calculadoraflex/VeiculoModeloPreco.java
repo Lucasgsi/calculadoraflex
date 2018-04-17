@@ -10,14 +10,14 @@ public class VeiculoModeloPreco {
     private String ano_modelo;
     private String preco;
     private String key;
-    private Integer time;
+    private String time;
     private String veiculo;
     private String id;
 
     public VeiculoModeloPreco() {
     }
 
-    public VeiculoModeloPreco(String referencia, String fipe_codigo, String name, String combustivel, String marca, String ano_modelo, String preco, String key, Integer time, String veiculo, String id) {
+    public VeiculoModeloPreco(String referencia, String fipe_codigo, String name, String combustivel, String marca, String ano_modelo, String preco, String key, String time, String veiculo, String id) {
         this.referencia = referencia;
         this.fipe_codigo = fipe_codigo;
         this.name = name;
@@ -95,11 +95,11 @@ public class VeiculoModeloPreco {
         this.key = key;
     }
 
-    public Integer getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Integer time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

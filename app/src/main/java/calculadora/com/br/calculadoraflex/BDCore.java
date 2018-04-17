@@ -15,14 +15,15 @@ public class BDCore extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table medias(id integer "+
-                "primary key autoincrement, datahora text,"+
-                "numerokm decimal,"+
-                "mediaconsumo decimal);");
+                "primary key autoincrement,"+
+                "numerokm varchar(20),"+
+                "abastecimento varchar(20),"+
+                "mediaconsumo varchar(10));");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table consumo;");
+        db.execSQL("drop table medias;");
         onCreate(db);
     }
 }
